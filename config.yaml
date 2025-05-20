@@ -1,0 +1,45 @@
+name: 'ML Model Implementation to support Video Processing Team'
+tags: ['ML Model Implementation']
+priority: 1
+is_parent: false
+command: "python run.py"
+
+environment_variables:
+  CUDA_HOME: /usr/local/cuda
+  LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
+  ZIPMOUNT_ENDPOINT_URL: https://blob.mr3.simcloud.apple.com
+resources:  
+  docker_image: docker.apple.com/iris/iris:latest #docker.apple.com/iris/iris:2.11.0 #
+  task_type: 2gpu
+  num_gpus: 2
+  disk_gb: 3000
+  timeout: 14d
+  ports: ["TENSORBOARD_PORT"]
+
+
+# resources:
+#   task_type: 2gpu
+#   num_gpus: 2
+#   memory_gb: 400
+#   disk_gb: 300
+#   timeout: 14d
+#   cluster: 'AWS_ALL'
+# is_parent: True
+
+
+# name: '1gpu debug'
+# priority: 1
+# description: ''
+# is_parent: false
+# environment_variables:
+#   CUDA_HOME: /usr/local/cuda
+#   LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
+#   ZIPMOUNT_ENDPOINT_URL: https://blob.mr3.simcloud.apple.com
+# resources:  
+#   docker_image: docker.apple.com/iris/iris:latest #docker.apple.com/iris/iris:2.11.0 #
+#   task_type: 1gpu
+#   num_gpus: 1  
+#   disk_gb: 4096
+#   timeout: 14d
+#   ports: ["TENSORBOARD_PORT"]
+# tags: [''] # put your name here
